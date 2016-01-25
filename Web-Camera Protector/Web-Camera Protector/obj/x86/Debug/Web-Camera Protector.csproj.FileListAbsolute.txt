@@ -1,0 +1,21 @@
+D:\users\190\Documents\Web-Camera Protector\Web-Camera Protector\bin\Debug\Web-Camera Protector.exe
+D:\users\190\Documents\Web-Camera Protector\Web-Camera Protector\bin\Debug\Web-Camera Protector.pdb
+D:\users\190\Documents\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web_Camera_Protector.Properties.Resources.resources
+D:\users\190\Documents\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web-Camera Protector.csproj.GenerateResource.Cache
+D:\users\190\Documents\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web-Camera Protector.exe
+D:\users\190\Documents\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web-Camera Protector.pdb
+D:\users\190\Documents\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web_Camera_Protector.MainForm.resources
+E:\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web-Camera Protector.exe
+E:\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web-Camera Protector.pdb
+E:\Web-Camera Protector\Web-Camera Protector\bin\Debug\Web-Camera Protector.exe
+E:\Web-Camera Protector\Web-Camera Protector\bin\Debug\Web-Camera Protector.pdb
+E:\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web_Camera_Protector.MainForm.resources
+E:\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web_Camera_Protector.Properties.Resources.resources
+E:\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web-Camera Protector.csproj.GenerateResource.Cache
+G:\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web-Camera Protector.exe
+G:\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web-Camera Protector.pdb
+G:\Web-Camera Protector\Web-Camera Protector\bin\Debug\Web-Camera Protector.exe
+G:\Web-Camera Protector\Web-Camera Protector\bin\Debug\Web-Camera Protector.pdb
+G:\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web_Camera_Protector.MainForm.resources
+G:\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web_Camera_Protector.Properties.Resources.resources
+G:\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web-Camera Protector.csproj.GenerateResource.Cache
