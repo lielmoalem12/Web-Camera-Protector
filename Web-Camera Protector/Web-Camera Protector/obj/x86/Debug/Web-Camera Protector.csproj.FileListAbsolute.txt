@@ -19,3 +19,10 @@ G:\Web-Camera Protector\Web-Camera Protector\bin\Debug\Web-Camera Protector.pdb
 G:\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web_Camera_Protector.MainForm.resources
 G:\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web_Camera_Protector.Properties.Resources.resources
 G:\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web-Camera Protector.csproj.GenerateResource.Cache
+C:\Users\Liel\Documents\GitHub\Web-Camera-Protector\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web-Camera Protector.exe
+C:\Users\Liel\Documents\GitHub\Web-Camera-Protector\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web-Camera Protector.pdb
+C:\Users\Liel\Documents\GitHub\Web-Camera-Protector\Web-Camera Protector\Web-Camera Protector\bin\Debug\Web-Camera Protector.exe
+C:\Users\Liel\Documents\GitHub\Web-Camera-Protector\Web-Camera Protector\Web-Camera Protector\bin\Debug\Web-Camera Protector.pdb
+C:\Users\Liel\Documents\GitHub\Web-Camera-Protector\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web_Camera_Protector.MainForm.resources
+C:\Users\Liel\Documents\GitHub\Web-Camera-Protector\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web_Camera_Protector.Properties.Resources.resources
+C:\Users\Liel\Documents\GitHub\Web-Camera-Protector\Web-Camera Protector\Web-Camera Protector\obj\x86\Debug\Web-Camera Protector.csproj.GenerateResource.Cache

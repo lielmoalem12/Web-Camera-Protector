@@ -8,14 +8,12 @@ import sys
 
 #region Constants
 DEVICE_NAME = "USB Video Device"
-HANDLE_EXE_PATH = os.path.dirname(os.path.realpath(sys.argv[0])) + r"\Handle.exe"
+HANDLE_EXE_PATH = r"C:/Handle.exe"
 PROCESS_TERMINATE = 1
 #endregion
 
-#region ----------   CLASSES   -----------------------------
 class  CameraStatus:
-    # -----  DATA  -----
-    def __init__(self):
+    def __init__(self):  #Constructor
         self.physical_device_object_name = ""
         self.process_name = ""
         self.process_id = -999
@@ -27,7 +25,7 @@ class  CameraStatus:
 
 
     #Change to get from server
-    def Get_Classification(self, ProcessName):
+    def Get_Classification(self, process_name):
         return 0
 
     def Get_Camera_Status(self):
@@ -101,7 +99,3 @@ class  CameraStatus:
         handle = ctypes.windll.kernel32.OpenProcess(PROCESS_TERMINATE, False, pid)
         ctypes.windll.kernel32.TerminateProcess(handle, -1)
         ctypes.windll.kernel32.CloseHandle(handle)
-#endregion
-#-------Check-------
-#a = CameraStatus()
-#a.Get_Camera_Status()

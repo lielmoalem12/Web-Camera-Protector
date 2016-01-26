@@ -11,17 +11,22 @@
 ##################################################################
 """
 #endregion
+
 #region Imports
 import base64
 from Crypto.Cipher import AES
 from Crypto import Random
-Block_Size = 16
-pad = lambda s: s + (Block_Size- len(s) % Block_Size) * chr(Block_Size- len(s) % Block_Size)#Adds chars to the end of the plain text so it will a fit a 16 bytes block
-unpad = lambda s : s[:-ord(s[len(s)-1:])]
+#endregion
+
+#region ----Constants----
+BLOCK_SIZE = 16
+PAD = lambda s: s + (BLOCK_SIZE- len(s) % BLOCK_SIZE) * chr(BLOCK_SIZE- len(s) % BLOCK_SIZE)#Adds chars to the end of the plain text so it will a fit a 16 bytes block
+UNPAD = lambda s : s[:-ord(s[len(s)-1:])]
+#endregion
 
 class AESCipher:
-    #Constructor
-    def __init__( self, key ):
+
+    def __init__( self, key ):  #Constructor
         #Generate a key with 16 bytes as a function of user's key
         if len(key)<16:
             self.key = key + chr((16-len(key)))*(16-len(key))
@@ -31,7 +36,7 @@ class AESCipher:
             self.key = key
 
     def encrypt( self, raw ):#encrypting the plain text by generated key
-        raw = pad(raw)
+        raw = PAD(raw)
         iv = Random.new().read( AES.block_size )
         cipher = AES.new( self.key, AES.MODE_CBC, iv )
         return base64.b64encode( iv + cipher.encrypt( raw ) )
@@ -40,7 +45,7 @@ class AESCipher:
         enc = base64.b64decode(enc)
         iv = enc[:16]
         cipher = AES.new(self.key, AES.MODE_CBC, iv )
-        return unpad(cipher.decrypt( enc[16:] ))
+        return UNPAD(cipher.decrypt( enc[16:] ))
 #test
 key = raw_input("Enter Encryption key:")
 aes = AESCipher(key)

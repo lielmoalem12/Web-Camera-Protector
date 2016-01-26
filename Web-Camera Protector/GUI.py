@@ -18,68 +18,67 @@ import socket
 import time
 import threading
 import pythoncom
-
+import subprocess
 #endregion
 
 #region Constants
 IP = '127.0.0.1'
 PORT = 5555
 BUF_SIZE = 4096
+GUI_PATH = os.path.dirname(os.path.realpath(sys.argv[0])) + r"\Web-Camera Protector\bin\Release\Web-Camera Protector.exe"
 #endregion
 
 class GUI:
-    def __init__(self):
-        self.cameradetails = CameraStatus()
-        self.statusnow = self.cameradetails.Get_Camera_Status()
-        self.guisocket = ""
 
-    def CheckStatus(self):
+    def __init__(self):  #Constructor
+        self.camera_details = CameraStatus()
+        self.status_now = self.camera_details.Get_Camera_Status()
+        self.gui_socket = ""
+
+    def CheckStatus(self):  #Check the camera status every 5 seconds
         while True:
             pythoncom.CoInitialize()
             check = CameraStatus()
-            statusnow = check.Get_Camera_Status()
-            self.cameradetails = check
-            self.statusnow = statusnow
+            status_now = check.Get_Camera_Status()
+            self.camera_details = check
+            self.status_now = status_now
             pythoncom.CoUninitialize()
             time.sleep(5)
 
-    def Handle_Command(self):
-            command = self.guisocket.recv(BUF_SIZE)
-            dict_command = { "Status" :  self.get_status, "KillThis": self._kill_process}
-            if ( command in dict_command.keys() ):
-                dict_command[command]()
+    def handle_command(self):  #Handle commands received from GUI
+            while True:
+                command = self.gui_socket.recv(BUF_SIZE)
+                dict_command = { "Status" :  self.get_status, "KillThis": self._kill_process}
+                if ( command in dict_command.keys() ):
+                    dict_command[command]()
 
 
-    def get_status(self):
-        if self.statusnow == '1':
-            self.guisocket.send("Camera is in use#"+self.cameradetails.process_name + "#" +self.cameradetails.exe_size)
+    def get_status(self):  #send to GUI camera's status
+        if self.status_now == '1':
+            self.gui_socket.send("Camera is in use#"+self.camera_details.process_name + "#" +self.camera_details.exe_size)
             time.sleep(0.1)
-        elif self.statusnow == '0':
-            self.guisocket.send("Camera was not found")
+        elif self.status_now == '0':
+            self.gui_socket.send("Camera was not found")
         else:
-            self.guisocket.send("Camera is not in use")
+            self.gui_socket.send("Camera is not in use")
 
-    def _kill_process(self):
+    def _kill_process(self):  #Kill the process that using the camera
                 try:
-                    self.cameradetails.KillProcess(self.cameradetails.process_id)
+                    self.camera_details.KillProcess(self.camera_details.process_id)
                 except Exception as detail:
                     print 'run-time error : ', detail
 
 
-
-    def threadnum2(self):
-        while True:
-            self.Handle_Command()
-
     def run(self):
-        Esocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        Esocket.bind((IP, 5555))
-        Esocket.listen(1)
+        subprocess.Popen([GUI_PATH])
+        esocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        esocket.bind((IP, 5555))
+        esocket.listen(1)
         print 'waiting for connections'
-        self.guisocket, GUIADRESS = Esocket.accept()
-        print 'connected sucssesfully'
+        self.gui_socket, gui_address = esocket.accept()
+        print 'connected successfully'
         t1 = threading.Thread(target=self.CheckStatus)
-        t2 = threading.Thread(target=self.threadnum2)
+        t2 = threading.Thread(target=self.handle_command)
         t1.start()
         t2.start()
 GUI().run()

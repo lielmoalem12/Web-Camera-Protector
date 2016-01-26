@@ -197,6 +197,7 @@ namespace Web_Camera_Protector
                 {
                     Status = "Failed to connect";
                 }
+            
         }
 
     }

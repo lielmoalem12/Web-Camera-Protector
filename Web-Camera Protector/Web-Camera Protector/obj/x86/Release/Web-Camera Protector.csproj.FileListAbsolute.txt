@@ -1,0 +1,7 @@
+C:\Users\Liel\Documents\GitHub\Web-Camera-Protector\Web-Camera Protector\Web-Camera Protector\bin\Release\Web-Camera Protector.exe
+C:\Users\Liel\Documents\GitHub\Web-Camera-Protector\Web-Camera Protector\Web-Camera Protector\bin\Release\Web-Camera Protector.pdb
+C:\Users\Liel\Documents\GitHub\Web-Camera-Protector\Web-Camera Protector\Web-Camera Protector\obj\x86\Release\Web_Camera_Protector.MainForm.resources
+C:\Users\Liel\Documents\GitHub\Web-Camera-Protector\Web-Camera Protector\Web-Camera Protector\obj\x86\Release\Web_Camera_Protector.Properties.Resources.resources
+C:\Users\Liel\Documents\GitHub\Web-Camera-Protector\Web-Camera Protector\Web-Camera Protector\obj\x86\Release\Web-Camera Protector.csproj.GenerateResource.Cache
+C:\Users\Liel\Documents\GitHub\Web-Camera-Protector\Web-Camera Protector\Web-Camera Protector\obj\x86\Release\Web-Camera Protector.exe
+C:\Users\Liel\Documents\GitHub\Web-Camera-Protector\Web-Camera Protector\Web-Camera Protector\obj\x86\Release\Web-Camera Protector.pdb
