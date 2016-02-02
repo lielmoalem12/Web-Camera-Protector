@@ -3,11 +3,11 @@
 """
 ##################################################################
 # Created By: Liel Moalem                                        #
-# Date: 25/01/2016                                               #
+# Date: 31/01/2016                                               #
 # Name: CameraStatus                                             #
 # Version: 1.0                                                   #
 # Windows Tested Versions: Win 7 64-bit                          #
-# Python Tested Versions: 2.7 64-bit                             #
+# Python Tested Versions: 2.6 64-bit                             #
 # Python Environment  : PyCharm                                  #
 ##################################################################
 """
