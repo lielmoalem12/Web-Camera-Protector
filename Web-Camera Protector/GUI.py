@@ -21,7 +21,7 @@ import pythoncom
 import subprocess
 #endregion
 
-#region Constants
+#region ----Constants----
 IP = '127.0.0.1'
 PORT = 5555
 BUF_SIZE = 4096
@@ -34,6 +34,7 @@ class GUI:
         self.camera_details = CameraStatus()
         self.status_now = self.camera_details.Get_Camera_Status()
         self.gui_socket = ""
+        self.client_name = ""
 
     def CheckStatus(self):  #Check the camera status every 5 seconds
         while True:
@@ -52,7 +53,6 @@ class GUI:
                 if ( command in dict_command.keys() ):
                     dict_command[command]()
 
-
     def get_status(self):  #send to GUI camera's status
         if self.status_now == '1':
             self.gui_socket.send("Camera is in use#"+self.camera_details.process_name + "#" +self.camera_details.exe_size)
@@ -68,8 +68,7 @@ class GUI:
                 except Exception as detail:
                     print 'run-time error : ', detail
 
-
-    def run(self):
+    def run(self): #activate GUI and handle commands from GUI, also checks the camera status
         subprocess.Popen([GUI_PATH])
         esocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         esocket.bind((IP, 5555))

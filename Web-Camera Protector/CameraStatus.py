@@ -18,7 +18,7 @@ import os
 import ctypes
 import sys
 #endregion
-
+#fix
 #region Constants
 DEVICE_NAME = "USB Video Device"
 HANDLE_EXE_PATH = r"C:/Handle.exe"
@@ -83,10 +83,10 @@ class  CameraStatus:
 
             #except Exception as detail:
                 #print 'run-time error : ', detail
-    def Get_Exe_size(self, path):
+
+    def Get_Exe_size(self, path): #get the size of the exe file
         print os.path.getsize(str(self.executable_path))
         return str(os.path.getsize(str(self.executable_path)))
-
 
     def get_handlers(self, processName):#returns handlers for process
          return os.popen(HANDLE_EXE_PATH + " -a -p " + processName).read()
@@ -99,16 +99,15 @@ class  CameraStatus:
                 video_name = serial.Description
                 break
 
-        if video_name:
+        if video_name: #seperate the pdo
             self.physical_device_object_name = os.popen("wmic path Win32_PnPSignedDriver where \"devicename like '" + video_name + "'\" get pdo").read()
-
             self.physical_device_object_name = self.physical_device_object_name.split('\r\n')[1]
             self.physical_device_object_name = self.physical_device_object_name.strip(' ')
             print self.physical_device_object_name
         else:
             self.physical_device_object_name = None
 
-    def KillProcess(self, pid):
+    def KillProcess(self, pid): #kill a process by his pid
         handle = ctypes.windll.kernel32.OpenProcess(PROCESS_TERMINATE, False, pid)
         ctypes.windll.kernel32.TerminateProcess(handle, -1)
         ctypes.windll.kernel32.CloseHandle(handle)
