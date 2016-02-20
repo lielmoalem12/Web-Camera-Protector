@@ -37,15 +37,15 @@ class AESCipher:
 
     def encrypt( self, raw ):#encrypting the plain text by generated key
         raw = PAD(raw)
-        iv = Random.new().read( AES.block_size )
-        cipher = AES.new( self.key, AES.MODE_CBC, iv )
-        return base64.b64encode( iv + cipher.encrypt( raw ) )
+        iv = Random.new().read(AES.block_size)
+        cipher = AES.new(self.key, AES.MODE_CBC, iv)
+        return base64.b64encode(iv + cipher.encrypt(raw))
 
     def decrypt( self, enc ):#decrypting the encrypted text by generated key
         enc = base64.b64decode(enc)
         iv = enc[:16]
-        cipher = AES.new(self.key, AES.MODE_CBC, iv )
-        return UNPAD(cipher.decrypt( enc[16:] ))
+        cipher = AES.new(self.key, AES.MODE_CBC, iv)
+        return UNPAD(cipher.decrypt(enc[16:]))
 #test
 key = raw_input("Enter Encryption key:")
 aes = AESCipher(key)

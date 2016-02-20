@@ -33,7 +33,7 @@ class  CameraStatus:
         self.status = ""
         self.processDict = {}
         self.executable_path = ""
-        self.exe_size = ""
+        self.exe_size = type(int)
 
 
 
