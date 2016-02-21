@@ -33,7 +33,7 @@ class GUI:
     def __init__(self):  #Constructor
         self.camera_details = CameraStatus()
         self.status_now = self.camera_details.Get_Camera_Status()
-        self.gui_socket = type(socket)
+        self.gui_socket = ""
         self.client_name = ""
 
     def CheckStatus(self):  #Check the camera status every 5 seconds
