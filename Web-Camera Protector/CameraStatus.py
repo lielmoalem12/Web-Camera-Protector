@@ -12,7 +12,7 @@
 """
 #endregion
 
-#region Imports
+#region ----Imports----
 from win32com.client import GetObject
 import os
 import ctypes
@@ -34,9 +34,6 @@ class  CameraStatus:
         self.processDict = {}
         self.executable_path = ""
         self.exe_size = ""
-
-
-
     #Change to get from server
     def Get_Classification(self, process_name):
         return 0

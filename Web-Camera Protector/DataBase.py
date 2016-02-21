@@ -125,4 +125,13 @@ class DataBase:
                     row = tuple(lst)
                 return row[2]
         return "Not found"
-#
+
+    def get_list(self, client_name, classifiction):
+        cur = self.database.cursor()
+        cur.execute("SELECT Client_name, Process_name, Process_size, Classification, Notes, Classification_ID from Classification")
+        results = cur.fetchall()
+        process_list = ""
+        for row in results:
+            if row[0] == client_name and str(row[3]) == str(classifiction) :
+                process_list += row[1] + "#" + row[2] + "#" + row[4]
+        return process_list

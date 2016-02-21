@@ -3,7 +3,7 @@
 ##################################################################
 # Created By: Liel Moalem                                        #
 # Date: 16/01/2016                                               #
-# Name: CameraStatus                                             #
+# Name: InfoSec                                                  #
 # Version: 1.0                                                   #
 # Windows Tested Versions: Win 7 64-bit                          #
 # Python Tested Versions: 2.7 64-bit                             #
@@ -12,7 +12,7 @@
 """
 #endregion
 
-#region Imports
+#region ----Imports----
 import base64
 from Crypto.Cipher import AES
 from Crypto import Random

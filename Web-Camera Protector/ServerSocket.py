@@ -55,21 +55,19 @@ class ServerSocket:
         return [command, param_number, params]
 
 #region fill it
-    def send_white_list(self):
-        pass
+    def send_white_list(self, client_name, classification):
+        self.database.get_list(client_name, classification)
 
-    def send_black_list(self):
-        pass
+    def send_black_list(self, client_name, classification):
+        self.database.get_list(client_name, classification)
 
     def remove_process(self):
         pass
 
     def update_process(self):
         pass
-
 #endregion
 
     def handle_command(self, datalist): #call the right command from the dictionary
         if (datalist[1] in self.commands_dict.keys()):
                     self.commands_dict[datalist[0]]()#datalist[2])
-
