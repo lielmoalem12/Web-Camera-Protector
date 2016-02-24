@@ -26,7 +26,6 @@ class ServerSocket:
         self.server_socket.listen(10)
         self.open_client_sockets = []
         self.database = DataBase()
-        self.commands_dict = {"GetWhiteList": self.send_white_list(), "GetBlackList": self.send_black_list(), "RemoveProcess": self.remove_process(), "UpdateProcess": self.update_process()}
 
     def handle_clients(self): #handle all the clients using the service
         while True:
@@ -43,7 +42,7 @@ class ServerSocket:
                         print "connection with client close"
                     else :
                         datalist = self.unpack_command(data)
-                        self.handle_command(datalist)
+                        current_socket.send(self.handle_command(datalist))
 
     def unpack_command(self, command): #unpacking command parts like command itself, parameters , parameters' number
         params = []
@@ -55,19 +54,19 @@ class ServerSocket:
         return [command, param_number, params]
 
 #region fill it
-    def send_white_list(self, client_name, classification):
-        self.database.get_list(client_name, classification)
+    def send_list(self, client_name, classification):
+        return self.database.get_list(client_name, classification)
 
-    def send_black_list(self, client_name, classification):
-        self.database.get_list(client_name, classification)
+    def remove_process(self, classification_ID):
+        self.database.delete_row("Classification", classification_ID)
+        return "process removed"
 
-    def remove_process(self):
-        pass
-
-    def update_process(self):
-        pass
+    def update_process(self, param, value, classification_ID):
+        self.database.update_table("Classification", param, value, classification_ID)
+        return "process update"
 #endregion
 
     def handle_command(self, datalist): #call the right command from the dictionary
-        if (datalist[1] in self.commands_dict.keys()):
-                    self.commands_dict[datalist[0]]()#datalist[2])
+        commands_dict = {"GetWhiteList": self.send_list(datalist[2][0], datalist[2][1]), "GetBlackList": self.send_list(datalist[2][0], datalist[2][1]), "RemoveProcess": self.remove_process(datalist[2][0]), "UpdateProcess": self.update_process(datalist[2][0], datalist[2][1], datalist[2][2])}
+        if (datalist[1] in commands_dict.keys()):
+            return commands_dict[datalist[0]]

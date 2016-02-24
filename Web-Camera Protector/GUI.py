@@ -22,8 +22,10 @@ import subprocess
 #endregion
 
 #region ----Constants----
-IP = '127.0.0.1'
-PORT = 5555
+GUI_IP = '127.0.0.1'
+GUI_PORT = 5555
+SERVER_IP = '127.0.0.1'
+SERVER_PORT = 1234
 BUF_SIZE = 4096
 GUI_PATH = os.path.dirname(os.path.realpath(sys.argv[0])) + r"\Web-Camera Protector\bin\Release\Web-Camera Protector.exe"
 #endregion
@@ -33,6 +35,7 @@ class GUI:
     def __init__(self):  #Constructor
         self.camera_details = CameraStatus()
         self.status_now = self.camera_details.Get_Camera_Status()
+        self.server_socket = socket.socket()
         self.gui_socket = ""
         self.client_name = ""
 
@@ -49,8 +52,8 @@ class GUI:
     def handle_command(self):  #Handle commands received from GUI
             while True:
                 command = self.gui_socket.recv(BUF_SIZE)
-                dict_command = { "Status" :  self.get_status, "KillThis": self._kill_process}
-                if ( command in dict_command.keys() ):
+                dict_command = {"Status": self.get_status, "KillThis": self._kill_process, "GetWhiteList": self.server_socket.send("GetWhiteList#2#")}
+                if (command in dict_command.keys() ):
                     dict_command[command]()
 
     def get_status(self):  #send to GUI camera's status
@@ -70,8 +73,9 @@ class GUI:
 
     def run(self): #activate GUI and handle commands from GUI, also checks the camera status
         subprocess.Popen([GUI_PATH])
+        self.server_socket.connect(SERVER_IP, SERVER_PORT)
         esocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        esocket.bind((IP, 5555))
+        esocket.bind((GUI_IP, GUI_PORT))
         esocket.listen(1)
         print 'waiting for connections'
         self.gui_socket, gui_address = esocket.accept()
@@ -81,3 +85,4 @@ class GUI:
         t1.start()
         t2.start()
 GUI().run()
+
